@@ -213,8 +213,9 @@ class App extends Component<IProps, IState> {
         const permitState = (id: string, state: number) => {
             for (var i = 0; i < this.state.permits.length; i++) {
                 if (this.state.permits[i].id === id) {
-                    this.state.permits[i].state = state;
-                    this.setState({ blockchain: BC.Blockchain.addToBlockchain(this.state.permits[i], this.state.blockchain) });
+                    var permit_clone = JSON.parse(JSON.stringify(this.state.permits[i]));
+                    permit_clone.state = state;
+                    this.setState({ blockchain: BC.Blockchain.addToBlockchain(permit_clone, this.state.blockchain) });
                     break;
                 }
             }
@@ -290,8 +291,9 @@ class App extends Component<IProps, IState> {
         const loanState = (id: string, state: number) => {
             for (var i = 0; i < this.state.loans.length; i++) {
                 if (this.state.loans[i].id === id) {
-                    this.state.loans[i].state = state;
-                    this.setState({ blockchain: BC.Blockchain.addToBlockchain(this.state.loans[i], this.state.blockchain) });
+                    var loan_clone = JSON.parse(JSON.stringify(this.state.loans[i]));
+                    loan_clone.state = state;
+                    this.setState({ blockchain: BC.Blockchain.addToBlockchain(loan_clone, this.state.blockchain) });
                     break;
                 }
             }
